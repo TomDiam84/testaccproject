@@ -5,14 +5,17 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +35,7 @@ import java.util.List;
 
 public class Home extends AppCompatActivity implements View.OnClickListener, RecyclerCallback {
 
+    private DrawerLayout drawer;
     TextView welcome;
     List<String> names = new ArrayList<>();
     List<Integer> calories = new ArrayList<>();
@@ -42,6 +46,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Rec
     TextView foodLabel;
     AlertDialog dialog;
     GridLayoutManager gridLayoutManager;
+    ImageView accountIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +84,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Rec
         clickItem6 = findViewById(R.id.cat_menu_6);
         clickItem7 = findViewById(R.id.cat_menu_7);
         clickItem8 = findViewById(R.id.cat_menu_8);
+        drawer = findViewById(R.id.drawer_layout);
+        accountIcon = findViewById(R.id.account_circle);
         clickItem1.setOnClickListener(this);
         clickItem2.setOnClickListener(this);
         clickItem3.setOnClickListener(this);
@@ -87,6 +94,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Rec
         clickItem6.setOnClickListener(this);
         clickItem7.setOnClickListener(this);
         clickItem8.setOnClickListener(this);
+        accountIcon.setOnClickListener(this);
         //Finish initiating the clicks//
 
         //Load random pizza recipies//
@@ -198,6 +206,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Rec
             case R.id.cat_menu_8:
                 refreshView("Sweets","&dishType=Sweets");
                 break;
+            case R.id.account_circle:
+                drawer.openDrawer(Gravity.LEFT);
         }
     }
 

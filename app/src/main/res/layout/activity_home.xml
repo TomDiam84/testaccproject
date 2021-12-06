@@ -39,6 +39,8 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@id/welcome"
                 app:layout_constraintTop_toTopOf="parent"
+                android:clickable="true"
+                android:focusable="true"
                 app:tint="#000000" />
 
             <TextView
